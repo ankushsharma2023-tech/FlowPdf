@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FlowPDF – All PDF Workflows</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- PDF libraries (for browser-only tools) -->
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span>FlowPDF</span>
+      </div>
+      <nav class="nav">
+        <p class="nav-title">Workflows</p>
+        <button class="nav-item active" data-section="workflows">Create workflow</button>
+
+        <p class="nav-title">Organize PDF</p>
+        <button class="nav-item" data-section="organize">Organize</button>
+
+        <p class="nav-title">Optimize PDF</p>
+        <button class="nav-item" data-section="optimize">Optimize</button>
+
+        <p class="nav-title">Convert PDF</p>
+        <button class="nav-item" data-section="convert">Convert</button>
+
+        <p class="nav-title">Edit PDF</p>
+        <button class="nav-item" data-section="edit">Edit</button>
+
+        <p class="nav-title">PDF Security</p>
+        <button class="nav-item" data-section="security">Security</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <p class="small">Made by Ankush × Jarvis</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="top-left">
+          <h1>All-in-One PDF Workspace</h1>
+          <p>Merge, convert, organize, sign & automate in one place.</p>
+        </div>
+        <div class="top-right">
+          <label class="file-drop">
+            <input type="file" id="quickFileInput" multiple />
+            <span>Drop files here or <strong>browse</strong></span>
+          </label>
+        </div>
+      </header>
+
+      <section class="filters">
+        <div class="filter-pill active" data-filter="all">All tools</div>
+        <div class="filter-pill" data-filter="convert">Convert</div>
+        <div class="filter-pill" data-filter="organize">Organize</div>
+        <div class="filter-pill" data-filter="edit">Edit</div>
+        <div class="filter-pill" data-filter="security">Security</div>
+        <div class="filter-pill" data-filter="workflow">Workflows</div>
+      </section>
+
+      <section class="tool-grid">
+        <!-- ORGANIZE -->
+        <button class="tool-card" data-tool="merge-pdf" data-category="organize">
+          <h3>Merge PDF</h3>
+          <p>Combine PDFs in the order you want.</p>
+          <span class="tag live">Live</span>
+        </button>
+
+        <button class="tool-card" data-tool="split-pdf" data-category="organize">
+          <h3>Split PDF</h3>
+          <p>Extract pages into separate PDFs.</p>
+          <span class="tag beta">Beta</span>
+        </button>
+
+        <button class="tool-card" data-tool="organize-pdf" data-category="organize">
+          <h3>Organize PDF</h3>
+          <p>Reorder, delete or duplicate pages.</p>
+          <span class="tag soon">Placeholder</span>
+        </button>
+
+        <!-- OPTIMIZE -->
+        <button class="tool-card" data-tool="compress-pdf" data-category="optimize">
+          <h3>Compress PDF</h3>
+          <p>Reduce file size while keeping quality.</p>
+          <span class="tag beta">Basic</span>
+        </button>
+
+        <button class="tool-card" data-tool="repair-pdf" data-category="optimize">
+          <h3>Repair PDF</h3>
+          <p>Recover data from damaged files.</p>
+          <span class="tag soon">Needs backend</span>
+        </button>
+
+        <!-- CONVERT -->
+        <button class="tool-card" data-tool="pdf-to-word" data-category="convert">
+          <h3>PDF ⇄ Word</h3>
+          <p>Convert while keeping text & images.</p>
+          <span class="tag soon">API</span>
+        </button>
+
+        <button class="tool-card" data-tool="pdf-to-ppt" data-category="convert">
+          <h3>PDF ⇄ PowerPoint</h3>
+          <p>Slides & layouts preserved.</p>
+          <span class="tag soon">API</span>
+        </button>
+
+        <button class="tool-card" data-tool="pdf-to-excel" data-category="convert">
+          <h3>PDF ⇄ Excel</h3>
+          <p>Extract tables into sheets.</p>
+          <span class="tag soon">API</span>
+        </button>
+
+        <button class="tool-card" data-tool="jpg-pdf" data-category="convert">
+          <h3>JPG ⇄ PDF</h3>
+          <p>Images to PDFs & vice-versa.</p>
+          <span class="tag live">Live</span>
+        </button>
+
+        <button class="tool-card" data-tool="html-pdf" data-category="convert">
+          <h3>HTML ⇄ PDF</h3>
+          <p>Convert webpages by URL.</p>
+          <span class="tag soon">API</span>
+        </button>
+
+        <button class="tool-card" data-tool="pdf-pdfa" data-category="convert">
+          <h3>PDF → PDF/A</h3>
+          <p>Long-term archiving format.</p>
+          <span class="tag soon">Backend</span>
+        </button>
+
+        <button class="tool-card" data-tool="ocr-pdf" data-category="convert">
+          <h3>OCR PDF</h3>
+          <p>Make scans searchable.</p>
+          <span class="tag soon">API</span>
+        </button>
+
+        <!-- EDIT -->
+        <button class="tool-card" data-tool="edit-pdf" data-category="edit">
+          <h3>Edit PDF</h3>
+          <p>Add text, images, shapes, highlight.</p>
+          <span class="tag soon">Canvas</span>
+        </button>
+
+        <button class="tool-card" data-tool="rotate-pdf" data-category="edit">
+          <h3>Rotate PDF</h3>
+          <p>Fix page orientation.</p>
+          <span class="tag beta">Basic</span>
+        </button>
+
+        <button class="tool-card" data-tool="page-numbers" data-category="edit">
+          <h3>Page numbers</h3>
+          <p>Add page numbers anywhere.</p>
+          <span class="tag soon">Canvas</span>
+        </button>
+
+        <button class="tool-card" data-tool="watermark" data-category="edit">
+          <h3>Watermark</h3>
+          <p>Stamp text or images on pages.</p>
+          <span class="tag soon">Canvas</span>
+        </button>
+
+        <button class="tool-card" data-tool="crop-pdf" data-category="edit">
+          <h3>Crop PDF</h3>
+          <p>Trim margins or regions.</p>
+          <span class="tag soon">Canvas</span>
+        </button>
+
+        <button class="tool-card" data-tool="compare-pdf" data-category="edit">
+          <h3>Compare PDF</h3>
+          <p>Side-by-side differences.</p>
+          <span class="tag soon">Backend</span>
+        </button>
+
+        <button class="tool-card" data-tool="redact-pdf" data-category="edit">
+          <h3>Redact PDF</h3>
+          <p>Hide sensitive info forever.</p>
+          <span class="tag soon">Backend</span>
+        </button>
+
+        <!-- SECURITY -->
+        <button class="tool-card" data-tool="sign-pdf" data-category="security">
+          <h3>Sign PDF</h3>
+          <p>Draw or upload signatures.</p>
+          <span class="tag soon">Canvas</span>
+        </button>
+
+        <button class="tool-card" data-tool="unlock-pdf" data-category="security">
+          <h3>Unlock PDF</h3>
+          <p>Remove passwords you know.</p>
+          <span class="tag soon">Backend</span>
+        </button>
+
+        <button class="tool-card" data-tool="protect-pdf" data-category="security">
+          <h3>Protect PDF</h3>
+          <p>Password-protect your files.</p>
+          <span class="tag soon">Backend</span>
+        </button>
+
+        <!-- WORKFLOWS -->
+        <button class="tool-card" data-tool="workflow-builder" data-category="workflow">
+          <h3>Create workflow</h3>
+          <p>Chain tools like “Scan → OCR → Compress”.</p>
+          <span class="tag beta">UI only</span>
+        </button>
+      </section>
+
+      <section class="status-bar" id="statusBar">
+        Ready. Choose a tool to begin.
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="toolModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Tool</h2>
+        <button id="modalClose" class="icon-btn">&times;</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
